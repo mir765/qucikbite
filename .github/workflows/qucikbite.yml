@@ -19,10 +19,10 @@ jobs:
           echo "Checking QuickBite project files..."
           ls -la
 
-      - name: Validate index.html
+      - name: Validate landing page
         run: |
-          test -f index.html
-          echo "index.html found successfully"
+          test -f login.html || test -f index.html
+          echo "Landing page HTML found successfully"
 
       - name: Build QuickBite Docker image
         run: |
