@@ -21,7 +21,7 @@ jobs:
 
       - name: Validate landing page
         run: |
-          test -f login.html || test -f index.html
+          test -f login.html || test -f emi.html
           echo "Landing page HTML found successfully"
 
       - name: Build QuickBite Docker image
