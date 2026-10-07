@@ -1,10 +1,10 @@
-
 name: QuickBite - Build and Test
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build-and-test:
