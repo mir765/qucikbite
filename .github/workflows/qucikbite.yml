@@ -1,4 +1,5 @@
-name: Deploy HTML Website
+
+name: QuickBite - Build and Test
 
 on:
   push:
@@ -6,34 +7,42 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout QuickBite repository
         uses: actions/checkout@v4
 
-      - name: Check HTML files
+      - name: Check project files
         run: |
-          echo "Checking project files..."
+          echo "Checking QuickBite project files..."
           ls -la
 
-      - name: Validate index.html exists
+      - name: Validate index.html
         run: |
           test -f index.html
           echo "index.html found successfully"
 
-      - name: Build Docker image
+      - name: Build QuickBite Docker image
         run: |
-          docker build -t mango-app .
+          docker build -t quickbite-app .
 
-      - name: Test Docker container
+      - name: Run QuickBite container
         run: |
-          docker run -d --name mango-test -p 8080:80 mango-app
+          docker run -d --name quickbite-test -p 8080:80 quickbite-app
+
+      - name: Test QuickBite website
+        run: |
           sleep 3
           curl -f http://localhost:8080
-          docker stop mango-test
-          docker rm mango-test
+          echo "QuickBite website is working successfully!"
 
-      - name: Deployment successful
-        run: echo "Mango website passed the GitHub Actions build and test!"
+      - name: Stop QuickBite container
+        run: |
+          docker stop quickbite-test
+          docker rm quickbite-test
+
+      - name: Build completed
+        run: |
+          echo "QuickBite Docker build and test completed successfully!"
