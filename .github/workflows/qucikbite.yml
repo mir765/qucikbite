@@ -1,0 +1,39 @@
+name: Deploy HTML Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check HTML files
+        run: |
+          echo "Checking project files..."
+          ls -la
+
+      - name: Validate index.html exists
+        run: |
+          test -f index.html
+          echo "index.html found successfully"
+
+      - name: Build Docker image
+        run: |
+          docker build -t mango-app .
+
+      - name: Test Docker container
+        run: |
+          docker run -d --name mango-test -p 8080:80 mango-app
+          sleep 3
+          curl -f http://localhost:8080
+          docker stop mango-test
+          docker rm mango-test
+
+      - name: Deployment successful
+        run: echo "Mango website passed the GitHub Actions build and test!"
