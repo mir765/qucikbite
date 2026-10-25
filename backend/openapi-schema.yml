@@ -1,0 +1,703 @@
+openapi: 3.0.3
+info:
+  title: QuickBite Food Delivery Platform API
+  version: 1.0.0
+  description: Comprehensive REST API for QuickBite Food Delivery ecosystem in Kerala,
+    India.
+paths:
+  /api/addresses/:
+    get:
+      operationId: addresses_retrieve
+      tags:
+      - addresses
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: addresses_create
+      tags:
+      - addresses
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/addresses/{id}/:
+    patch:
+      operationId: addresses_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - addresses
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: addresses_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - addresses
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/admin/overview/:
+    get:
+      operationId: admin_overview_retrieve
+      tags:
+      - admin
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/admin/restaurants/:
+    get:
+      operationId: admin_restaurants_retrieve
+      tags:
+      - admin
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: admin_restaurants_partial_update
+      tags:
+      - admin
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/admin/restaurants/{id}/approval/:
+    get:
+      operationId: admin_restaurants_approval_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: admin_restaurants_approval_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/admin/users/:
+    get:
+      operationId: admin_users_retrieve
+      tags:
+      - admin
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/auth/login/:
+    post:
+      operationId: auth_login_create
+      tags:
+      - auth
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/auth/me/:
+    get:
+      operationId: auth_me_retrieve
+      tags:
+      - auth
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: auth_me_partial_update
+      tags:
+      - auth
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/auth/register/:
+    post:
+      operationId: auth_register_create
+      tags:
+      - auth
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/auth/switch-demo-role/:
+    post:
+      operationId: auth_switch_demo_role_create
+      description: Convenient endpoint for switching between Customer, Restaurant
+        Owner, Rider, and Admin demo accounts
+      tags:
+      - auth
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/bitepoints/:
+    get:
+      operationId: bitepoints_retrieve
+      tags:
+      - bitepoints
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/bitepoints/redeem/:
+    post:
+      operationId: bitepoints_redeem_create
+      tags:
+      - bitepoints
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/budget-mode/:
+    get:
+      operationId: budget_mode_retrieve
+      description: |-
+        Signature Budget Mode:
+        Computes exact payable amount (food + tax + platform fee + delivery - discount)
+        and returns dishes that strictly never exceed the user's selected budget.
+      tags:
+      - budget-mode
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/cart/calculate/:
+    post:
+      operationId: cart_calculate_create
+      description: |-
+        Validates items, checks multi-restaurant constraints, calculates
+        subtotal, 5% GST, delivery fee, platform fee, validates coupon code,
+        and returns verified totals.
+      tags:
+      - cart
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/group-orders/:
+    get:
+      operationId: group_orders_retrieve
+      tags:
+      - group-orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: group_orders_create
+      tags:
+      - group-orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/group-orders/{room_code}/:
+    get:
+      operationId: group_orders_retrieve_2
+      parameters:
+      - in: path
+        name: room_code
+        schema:
+          type: string
+        required: true
+      tags:
+      - group-orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: group_orders_create_2
+      parameters:
+      - in: path
+        name: room_code
+        schema:
+          type: string
+        required: true
+      tags:
+      - group-orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/group-orders/{room_code}/add-item/:
+    post:
+      operationId: group_orders_add_item_create
+      parameters:
+      - in: path
+        name: room_code
+        schema:
+          type: string
+        required: true
+      tags:
+      - group-orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/lastcall-bites/:
+    get:
+      operationId: lastcall_bites_retrieve
+      tags:
+      - lastcall-bites
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: lastcall_bites_create
+      tags:
+      - lastcall-bites
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/mealpass/:
+    get:
+      operationId: mealpass_retrieve
+      tags:
+      - mealpass
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: mealpass_create
+      tags:
+      - mealpass
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/menu-items/:
+    get:
+      operationId: menu_items_retrieve
+      tags:
+      - menu-items
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: menu_items_create
+      tags:
+      - menu-items
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: menu_items_partial_update
+      tags:
+      - menu-items
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/menu-items/{id}/:
+    get:
+      operationId: menu_items_retrieve_2
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - menu-items
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: menu_items_create_2
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - menu-items
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: menu_items_partial_update_2
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - menu-items
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/orders/:
+    get:
+      operationId: orders_retrieve
+      tags:
+      - orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: orders_create
+      tags:
+      - orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/orders/{order_number}/:
+    get:
+      operationId: orders_retrieve_2
+      parameters:
+      - in: path
+        name: order_number
+        schema:
+          type: string
+        required: true
+      tags:
+      - orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/orders/{order_number}/refund/:
+    post:
+      operationId: orders_refund_create
+      parameters:
+      - in: path
+        name: order_number
+        schema:
+          type: string
+        required: true
+      tags:
+      - orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/orders/{order_number}/status/:
+    patch:
+      operationId: orders_status_partial_update
+      parameters:
+      - in: path
+        name: order_number
+        schema:
+          type: string
+        required: true
+      tags:
+      - orders
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/payments/verify/:
+    post:
+      operationId: payments_verify_create
+      description: |-
+        Verifies Razorpay payment signature or sandbox mock payment,
+        records transaction in Payment table, updates Order status to CONFIRMED.
+      tags:
+      - payments
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/restaurant/dashboard/:
+    get:
+      operationId: restaurant_dashboard_retrieve
+      tags:
+      - restaurant
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/restaurants/:
+    get:
+      operationId: restaurants_retrieve
+      tags:
+      - restaurants
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/restaurants/{slug_or_id}/:
+    get:
+      operationId: restaurants_retrieve_2
+      parameters:
+      - in: path
+        name: slug_or_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - restaurants
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/reviews/:
+    get:
+      operationId: reviews_retrieve
+      tags:
+      - reviews
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: reviews_create
+      tags:
+      - reviews
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/rider/dashboard/:
+    get:
+      operationId: rider_dashboard_retrieve
+      tags:
+      - rider
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/rider/toggle-status/:
+    post:
+      operationId: rider_toggle_status_create
+      tags:
+      - rider
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/smartbite/query/:
+    post:
+      operationId: smartbite_query_create
+      description: |-
+        Intelligent AI food discovery engine.
+        Interprets natural language queries (budget, dietary preference, taste, party size, Kerala specialities)
+        and returns tailored meal suggestions with transparent rationale.
+      tags:
+      - smartbite
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/support-tickets/:
+    get:
+      operationId: support_tickets_retrieve
+      tags:
+      - support-tickets
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: support_tickets_create
+      tags:
+      - support-tickets
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
